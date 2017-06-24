@@ -15,11 +15,11 @@ import java.util.UUID;
 public class BinaryFileDeserializer extends Deserializer {
 
 	public BinaryFileDeserializer(File file, UUID identifier) throws FileNotFoundException {
-		super(new FileInputStream(file), identifier);
+		this(new FileInputStream(file), identifier);
 	}
 	
 	public BinaryFileDeserializer(FileInputStream in, UUID identifier) throws FileNotFoundException {
-		super(in, identifier);
+		super(CompilationType.BINARY, in, identifier);
 	}
 	
 	@SuppressWarnings("unchecked")

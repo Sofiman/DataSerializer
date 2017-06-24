@@ -41,8 +41,6 @@ class FileDeserializerBuilder {
 	public Deserializer get(){
 		try {
 			switch (this.type) {
-			case SIMPLE:
-				break;
 			case JSON:
 				return new JsonFileDeserializer(this.file, this.identifier);
 			case BINARY:

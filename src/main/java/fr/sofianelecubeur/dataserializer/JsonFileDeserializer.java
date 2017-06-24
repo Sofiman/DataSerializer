@@ -27,7 +27,7 @@ public class JsonFileDeserializer extends Deserializer {
 	}
 	
 	public JsonFileDeserializer(FileInputStream in, UUID identifier) throws ParseException, IOException {
-		super(in, identifier);
+		super(CompilationType.JSON, in, identifier);
 		this.createJSONObject(in);
 	}
 	

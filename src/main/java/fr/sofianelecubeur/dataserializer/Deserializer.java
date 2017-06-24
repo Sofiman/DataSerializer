@@ -17,11 +17,13 @@ import java.util.UUID;
 public abstract class Deserializer extends DataInputStream  {
 
 	private static Map<UUID, Deserializer> map = new HashMap<>();
-	
+
+	protected final CompilationType type;
 	protected final UUID identifier;
 	
-	public Deserializer(InputStream in, UUID identifier) {
+	public Deserializer(CompilationType type, InputStream in, UUID identifier) {
 		super(in);
+		this.type = type;
 		this.identifier = identifier;
 		map.put(this.identifier, this);
 	}
@@ -34,7 +36,7 @@ public abstract class Deserializer extends DataInputStream  {
 	
 	@Override
 	public String toString() {
-		return "Deserializer[id:"+identifier+",in:"+in+"]";
+		return "Deserializer[id:"+identifier+",type:"+type+"]";
 	}
 	
 	public static Deserializer find(String identifier){

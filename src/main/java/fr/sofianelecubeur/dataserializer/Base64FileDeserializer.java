@@ -18,11 +18,11 @@ import fr.sofianelecubeur.dataserializer.base64.Base64Coder;
 public class Base64FileDeserializer extends Deserializer {
 
 	public Base64FileDeserializer(File file, UUID identifier) throws IOException {
-		super(createBase64Stream(new FileInputStream(file)), identifier);
+		this(new FileInputStream(file), identifier);
 	}
 	
 	public Base64FileDeserializer(FileInputStream in, UUID identifier) throws IOException {
-		super(createBase64Stream(in), identifier);
+		super(CompilationType.BINARY, createBase64Stream(in), identifier);
 	}
 	
 	@SuppressWarnings("unchecked")

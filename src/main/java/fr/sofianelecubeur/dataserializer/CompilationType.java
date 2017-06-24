@@ -6,7 +6,6 @@ package fr.sofianelecubeur.dataserializer;
  * @author SofianeLeCubeur
  */
 public enum CompilationType {
-	SIMPLE(),
 	JSON(),
 	BINARY(),
 	BASE64();

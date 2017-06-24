@@ -40,8 +40,6 @@ class FileSerializerBuilder {
 	public FileSerializer get(){
 		try {
 			switch (this.type) {
-			case SIMPLE:
-				return new SimpleFileSerializer(this.identifier);
 			case JSON:
 				return new JsonFileSerializer(this.length, this.identifier);
 			case BINARY:
