@@ -8,5 +8,6 @@ package fr.sofianelecubeur.dataserializer;
 public enum CompilationType {
 	JSON(),
 	BINARY(),
-	BASE64();
+	BASE64(),
+	NUMERIC();
 }

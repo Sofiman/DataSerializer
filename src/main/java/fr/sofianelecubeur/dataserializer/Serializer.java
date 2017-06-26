@@ -1,5 +1,6 @@
 package fr.sofianelecubeur.dataserializer;
 
+import java.io.Closeable;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +13,7 @@ import java.util.UUID;
  *
  * Please, for using a new Serializer, use {@link fr.sofianelecubeur.dataserializer.FileSerializerBuilder}
  */
-public abstract class Serializer {
+public abstract class Serializer implements Closeable {
 	
 	private static Map<UUID, Serializer> map = new HashMap<>();
 	
