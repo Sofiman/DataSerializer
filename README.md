@@ -8,7 +8,7 @@ Serialize and Deserialize data !
 First, create A FileSerializerBuilder object and invoke "get" method to return the FileSerializer:
 <br> Example: <br>
 ```java
-// Create first an builder and cast it
+// Create first an builder with the compilation type and cast it
 JsonFileSerializer serializer = (JsonFileSerializer) new FileSerializerBuilder().type(CompilationType.JSON).get();
 // write your data, Warning: the json serializer need keys !
 serializer.writeObject("int", 192);
@@ -28,10 +28,10 @@ First, create A FileDeserializerBuilder object and invoke "get" method to return
 <br> Example: <br>
 ```java
 // Create first an builder with the compilation type and the file and cast it
-JsonFileDeserializer deserializer = (JsonFileDeserializer) new FileDeserializerBuilder().type(CompilationType.JSON).file(new File("data1")).get();
+JsonFileDeserializer deserializer = (JsonFileDeserializer) new FileDeserializerBuilder().type(CompilationType.JSON).file(new File("data")).get();
 // read your data, the Deserializer has DataInputStream as superclass, Warning: the json deserializer need keys !
 int resultInt = deserializer.readInt("int");
-String resultString = deserializer.readUTF("str");
+String resultString = deserializer.readUTF("string");
 float resultFloat = deserializer.readFloat("float");
 // Don't forget to close the deserializer ! You can use a "try-catch-with-ressources".
 serializer.close();
