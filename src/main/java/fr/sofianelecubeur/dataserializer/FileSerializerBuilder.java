@@ -7,7 +7,7 @@ import java.util.UUID;
  *
  * @author SofianeLeCubeur
  */
-class FileSerializerBuilder {
+public class FileSerializerBuilder {
 	
 	private CompilationType type;
 	private int length;
@@ -40,12 +40,12 @@ class FileSerializerBuilder {
 	public FileSerializer get(){
 		try {
 			switch (this.type) {
-			case JSON:
-				return new JsonFileSerializer(this.length, this.identifier);
-			case BINARY:
-				return new BinaryFileSerializer(this.length, this.identifier);
-			case BASE64:
-				return new Base64FileSerializer(this.length, this.identifier);
+				case JSON:
+					return new JsonFileSerializer(this.length, this.identifier);
+				case BINARY:
+					return new BinaryFileSerializer(this.length, this.identifier);
+				case BASE64:
+					return new Base64FileSerializer(this.length, this.identifier);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -9,5 +9,6 @@ public enum CompilationType {
 	JSON(),
 	BINARY(),
 	BASE64(),
-	NUMERIC();
+	NUMERRIC(), // Unused right now.
+	SHA1();
 }

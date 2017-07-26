@@ -8,7 +8,7 @@ import java.util.UUID;
  *
  * @author SofianeLeCubeur
  */
-class FileDeserializerBuilder {
+public class FileDeserializerBuilder {
 	
 	private CompilationType type;
 	private File file;

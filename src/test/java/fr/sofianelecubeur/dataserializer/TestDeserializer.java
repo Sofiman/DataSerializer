@@ -10,7 +10,6 @@ public class TestDeserializer {
 				.file(new File("data")).get();
 		System.out.println(deserializer.readInt());
 		System.out.println(deserializer.readUTF());
-		System.out.println(deserializer.readUTF());
 		System.out.println(deserializer.readFloat());
 		System.out.println(deserializer.readObject());
 		
@@ -20,7 +19,6 @@ public class TestDeserializer {
 				.file(new File("data1")).get();
 		System.out.println(deserializer1.readInt("int"));
 		System.out.println(deserializer1.readUTF("str"));
-		System.out.println(deserializer1.readUTF("key"));
 		System.out.println(deserializer1.readFloat("flt"));
 		System.out.println(deserializer1.readObject("ipt"));
 		

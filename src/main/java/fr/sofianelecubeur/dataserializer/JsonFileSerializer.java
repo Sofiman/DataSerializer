@@ -33,39 +33,57 @@ public class JsonFileSerializer extends Serializer implements FileSerializer {
 	
 	@Deprecated
 	@Override
-	public void write(byte[] o) throws IOException {}
+	public void write(byte[] o) throws IOException {
+		throw new UnsupportedOperationException();
+	}
 
 	@Deprecated
 	@Override
-	public void writeInt(Integer o) throws IOException {}
+	public void writeInt(Integer o) throws IOException {
+		throw new UnsupportedOperationException();
+	}
 
 	@Deprecated
 	@Override
-	public void writeShort(Short o) throws IOException {}
+	public void writeShort(Short o) throws IOException {
+		throw new UnsupportedOperationException();
+	}
 
 	@Deprecated
 	@Override
-	public void writeLong(Long o) throws IOException {}
+	public void writeLong(Long o) throws IOException {
+		throw new UnsupportedOperationException();
+	}
 
 	@Deprecated
 	@Override
-	public void writeDouble(Double o) throws IOException {}
+	public void writeDouble(Double o) throws IOException {
+		throw new UnsupportedOperationException();
+	}
 
 	@Deprecated
 	@Override
-	public void writeFloat(Float o) throws IOException {}
+	public void writeFloat(Float o) throws IOException {
+		throw new UnsupportedOperationException();
+	}
 
 	@Deprecated
 	@Override
-	public void writeBoolean(Boolean o) throws IOException {}
+	public void writeBoolean(Boolean o) throws IOException {
+		throw new UnsupportedOperationException();
+	}
 
 	@Deprecated
 	@Override
-	public void writeUTF(String o) throws IOException {}
+	public void writeUTF(String o) throws IOException {
+		throw new UnsupportedOperationException();
+	}
 
 	@Deprecated
 	@Override
-	public void writeObject(Object o) throws IOException {}
+	public void writeObject(Object o) throws IOException {
+		throw new UnsupportedOperationException();
+	}
 	
 	public void writeObject(String key, Object value){
 		this.json.put(key, value.toString());
