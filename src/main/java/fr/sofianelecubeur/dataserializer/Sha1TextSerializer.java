@@ -1,9 +1,5 @@
 package fr.sofianelecubeur.dataserializer;
 
-import fr.sofianelecubeur.dataserializer.CompilationType;
-import fr.sofianelecubeur.dataserializer.Serializer;
-import fr.sofianelecubeur.dataserializer.TextSerializer;
-
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

@@ -108,6 +108,13 @@ public class Base64FileSerializer extends Serializer implements FileSerializer {
 		this.outStream.close();
 		super.close();
 	}
+
+	public void compress(int level) {
+		byte[] old = bytes.toByteArray();
+		byte[] compressed = CompressionUtils.compress(old, level);
+		bytes = new ByteArrayOutputStream();
+		bytes.write(level);
+	}
 	
 	public ByteArrayOutputStream getBytes() {
 		return this.bytes;

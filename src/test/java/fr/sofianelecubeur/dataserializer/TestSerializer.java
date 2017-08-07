@@ -31,7 +31,7 @@ public class TestSerializer {
 		System.out.println("Finished in "+(time1 / 1000)+"s");
 
 		Sha1TextSerializer sha1Serializer = new Sha1TextSerializer();
-		System.out.println(sha1Serializer.compile("test"));
+		System.out.println(sha1Serializer.compile("Test"));
 	}
 
 }
