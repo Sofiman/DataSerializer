@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.sofianelecubeur.dataserializer</groupId>
 	<artifactId>DataSerializer</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>DataSerializer</name>
 	<description>Serialize and Deserialize files !</description>
 

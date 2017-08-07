@@ -24,6 +24,10 @@ public class Base64FileDeserializer extends Deserializer {
 	public Base64FileDeserializer(FileInputStream in, UUID identifier) throws IOException {
 		super(CompilationType.BINARY, createBase64Stream(in), identifier);
 	}
+
+	public Base64FileDeserializer(FileInputStream in, boolean compression, UUID identifier) throws IOException {
+		super(CompilationType.BINARY, (compression ? createBase64StreamWithCompression(in) : createBase64Stream(in)), identifier);
+	}
 	
 	@SuppressWarnings("unchecked")
 	public <T> T readObject(Class<T> clazz) throws IOException, ClassNotFoundException {
@@ -45,6 +49,18 @@ public class Base64FileDeserializer extends Deserializer {
 		byte[] bf = Base64Coder.decodeLines(bytes.readUTF());
 		ByteArrayInputStream stream = new ByteArrayInputStream(bf);
 		
+		in.close();
+		bytes.close();
+		return new DataInputStream(stream);
+	}
+
+	protected static DataInputStream createBase64StreamWithCompression(FileInputStream in) throws IOException {
+		DataInputStream bytes = new DataInputStream(in);
+
+		byte[] bf = Base64Coder.decodeLines(bytes.readUTF());
+		byte[] data = CompressionUtils.decompress(bf);
+		ByteArrayInputStream stream = new ByteArrayInputStream(data);
+
 		in.close();
 		bytes.close();
 		return new DataInputStream(stream);

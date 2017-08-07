@@ -1,6 +1,5 @@
 package fr.sofianelecubeur.dataserializer;
 
-import java.beans.Encoder;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.HashMap;
