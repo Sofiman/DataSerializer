@@ -109,11 +109,11 @@ public class Base64FileSerializer extends Serializer implements FileSerializer {
 		super.close();
 	}
 
-	public void compress(int level) {
+	public void compress(int level) throws IOException {
 		byte[] old = bytes.toByteArray();
 		byte[] compressed = CompressionUtils.compress(old, level);
 		bytes = new ByteArrayOutputStream();
-		bytes.write(level);
+		bytes.write(compressed);
 	}
 	
 	public ByteArrayOutputStream getBytes() {

@@ -19,11 +19,13 @@ import org.json.simple.parser.ParseException;
  *  lease use internal read methods with keys !
  */
 public class JsonFileDeserializer extends Deserializer {
-	
+
+	private File file;
 	private JSONObject json;
 	
 	public JsonFileDeserializer(File file, UUID identifier) throws ParseException, IOException {
 		this(new FileInputStream(file), identifier);
+		this.file = file;
 	}
 	
 	public JsonFileDeserializer(FileInputStream in, UUID identifier) throws ParseException, IOException {
@@ -50,6 +52,11 @@ public class JsonFileDeserializer extends Deserializer {
 	public Object readObject() throws IOException, ClassNotFoundException {
 		ObjectInputStream in = new ObjectInputStream(this.in);
 		return in.readObject();
+	}
+
+	public FileInfo info(){
+		if(this.file == null) throw new NullPointerException();
+		return new FileInfo(this.file);
 	}
 	
 	public Integer readInt(String key){

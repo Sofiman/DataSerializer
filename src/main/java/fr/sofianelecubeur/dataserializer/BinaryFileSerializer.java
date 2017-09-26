@@ -100,6 +100,13 @@ public class BinaryFileSerializer extends Serializer implements FileSerializer {
 		this.outStream.close();
 		super.close();
 	}
+
+	public void compress(int level) throws IOException {
+		byte[] old = bytes.toByteArray();
+		byte[] compressed = CompressionUtils.compress(old, level);
+		bytes = new ByteArrayOutputStream();
+		bytes.write(compressed);
+	}
 	
 	public ByteArrayOutputStream getBytes() {
 		return bytes;

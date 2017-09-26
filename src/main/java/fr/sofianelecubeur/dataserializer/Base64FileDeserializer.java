@@ -17,8 +17,11 @@ import fr.sofianelecubeur.dataserializer.base64.Base64Coder;
  */
 public class Base64FileDeserializer extends Deserializer {
 
+	private File file;
+
 	public Base64FileDeserializer(File file, UUID identifier) throws IOException {
 		this(new FileInputStream(file), identifier);
+		this.file = file;
 	}
 	
 	public Base64FileDeserializer(FileInputStream in, UUID identifier) throws IOException {
@@ -41,6 +44,11 @@ public class Base64FileDeserializer extends Deserializer {
 	public Object readObject() throws IOException, ClassNotFoundException {
 		ObjectInputStream in = new ObjectInputStream(this.in);
 		return in.readObject();
+	}
+
+	public FileInfo info(){
+		if(this.file == null) throw new NullPointerException();
+		return new FileInfo(this.file);
 	}
 	
 	protected static DataInputStream createBase64Stream(FileInputStream in) throws IOException {

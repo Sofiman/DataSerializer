@@ -1,10 +1,8 @@
 package fr.sofianelecubeur.dataserializer;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import fr.sofianelecubeur.dataserializer.base64.Base64Coder;
+
+import java.io.*;
 import java.util.UUID;
 
 /**
@@ -14,8 +12,11 @@ import java.util.UUID;
  */
 public class BinaryFileDeserializer extends Deserializer {
 
+	private File file;
+
 	public BinaryFileDeserializer(File file, UUID identifier) throws FileNotFoundException {
 		this(new FileInputStream(file), identifier);
+		this.file = file;
 	}
 	
 	public BinaryFileDeserializer(FileInputStream in, UUID identifier) throws FileNotFoundException {
@@ -34,6 +35,11 @@ public class BinaryFileDeserializer extends Deserializer {
 	public Object readObject() throws IOException, ClassNotFoundException {
 		ObjectInputStream in = new ObjectInputStream(this.in);
 		return in.readObject();
+	}
+
+	public FileInfo info(){
+		if(this.file == null) throw new NullPointerException();
+		return new FileInfo(this.file);
 	}
 	
 }
