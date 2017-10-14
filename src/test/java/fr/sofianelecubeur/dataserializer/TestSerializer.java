@@ -31,6 +31,16 @@ public class TestSerializer {
 		System.out.println("Finished in "+(time1 / 1000)+"s");
 
 		System.out.println(HashUtils.sha1("Test"));
+
+		CSVFileSerializer serializer2 = new CSVFileSerializer(UUID.randomUUID());
+		serializer2.setDelemiter(";");
+		serializer2.addColumns("id", "value");
+		serializer2.setValue("id", "1");
+		serializer2.setValue("value", "123");
+		serializer2.addLine();
+		serializer2.setValue("id", "2");
+		serializer2.setValue("value", "456");
+		serializer2.compile(new File("file.csv"));
 	}
 
 }
