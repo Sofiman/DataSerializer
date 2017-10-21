@@ -41,12 +41,14 @@ public class FileDeserializerBuilder {
 	public Deserializer get(){
 		try {
 			switch (this.type) {
-			case JSON:
-				return new JsonFileDeserializer(this.file, this.identifier);
-			case BINARY:
-				return new BinaryFileDeserializer(this.file, this.identifier);
-			case BASE64:
-				return new Base64FileDeserializer(this.file, this.identifier);
+				case JSON:
+					return new JsonFileDeserializer(this.file, this.identifier);
+				case BINARY:
+					return new BinaryFileDeserializer(this.file, this.identifier);
+				case BASE64:
+					return new Base64FileDeserializer(this.file, this.identifier);
+				case CVS:
+					return new CSVFileDeserializer(this.file, this.identifier);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -2,11 +2,17 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>fr.sofianelecubeur.dataserializer</groupId>
+	<groupId>com.github.sofianelecubeur</groupId>
 	<artifactId>DataSerializer</artifactId>
 	<version>0.0.4-SNAPSHOT</version>
 	<name>DataSerializer</name>
+	<url>https://github.com/SofianeLeCubeur/DataSerializer</url>
 	<description>Serialize and Deserialize files !</description>
+
+	<issueManagement>
+		<system>GitHub Issue Tracker</system>
+		<url>https://github.com/SofianeLeCubeur/DataSerializer/issues</url>
+	</issueManagement>
 
 	<dependencies>
 		<dependency>
@@ -16,6 +22,10 @@
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
 	<build>
 		<finalName>${project.artifactId}</finalName>

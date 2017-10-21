@@ -46,6 +46,8 @@ public class FileSerializerBuilder {
 					return new BinaryFileSerializer(this.length, this.identifier);
 				case BASE64:
 					return new Base64FileSerializer(this.length, this.identifier);
+				case CVS:
+					return new CSVFileSerializer(this.identifier);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
