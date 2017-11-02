@@ -2,6 +2,7 @@ package fr.sofianelecubeur.dataserializer;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.StringJoiner;
 
 public class TestDeserializer {
 
@@ -23,6 +24,14 @@ public class TestDeserializer {
 		System.out.println(deserializer1.readObject("ipt"));
 		
 		deserializer1.close();
+
+		System.out.println("------------------------");
+		CSVFileDeserializer deserializer2 = (CSVFileDeserializer) new FileDeserializerBuilder().type(CompilationType.CVS)
+                .file(new File("file.csv")).delemiter(";").get();
+        System.out.println("Columns: "+deserializer2.getColumnsString());
+        System.out.println("Rows: "+deserializer2.getRows());
+        System.out.println("Values: "+deserializer2.getValuesString());
+
 	}
 	
 }

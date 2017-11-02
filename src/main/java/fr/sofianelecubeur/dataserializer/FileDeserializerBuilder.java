@@ -12,6 +12,7 @@ public class FileDeserializerBuilder {
 	
 	private CompilationType type;
 	private File file;
+	private String delemiter;
 	private UUID identifier;
 
 	public FileDeserializerBuilder() {
@@ -34,7 +35,13 @@ public class FileDeserializerBuilder {
 	
 	public FileDeserializerBuilder identifier(UUID identifier){
 		this.identifier = identifier;
-		
+
+		return this;
+	}
+
+	public FileDeserializerBuilder delemiter(String delemiter){
+		this.delemiter = delemiter;
+
 		return this;
 	}
 	
@@ -48,7 +55,8 @@ public class FileDeserializerBuilder {
 				case BASE64:
 					return new Base64FileDeserializer(this.file, this.identifier);
 				case CVS:
-					return new CSVFileDeserializer(this.file, this.identifier);
+					return (delemiter != null ? new CSVFileDeserializer(this.file, delemiter, this.identifier)
+							: new CSVFileDeserializer(this.file, this.identifier));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
