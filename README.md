@@ -38,7 +38,7 @@ serializer.close();
 ```
 <br>
 
-**Tip**: You can use a "try-catch-with-ressources" instead calling close method.
+> **Tip**: You can use a "try-catch-with-ressources" instead calling close method.
 
 ## Installation
 
