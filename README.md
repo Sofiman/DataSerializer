@@ -1,9 +1,9 @@
 <h1> DataSerializer </h1>
 
 <p>
-Serialize and Deserialize data !
+<strong>Serialize and Deserialize data !<strong>
 
-<strong> How to use an Serializer ? </strong>
+## How to use an Serializer ?
 
 First, create A FileSerializerBuilder object and invoke "get" method to return the FileSerializer:
 <br> Example: <br>
@@ -17,12 +17,12 @@ serializer.writeObject("float", 42.5f);
 // and for creating the file, juste call "compile"
 // method with the target file
 long execTime = serializer.compile(new File("data")); // You can get the time of the building task
-// Don't forget to close the serializer ! You can use a "try-catch-with-ressources".
+// Don't forget to close the serializer !
 serializer.close();
 ```
 <br>
 
-<strong> How to use an Deserializer ? </strong>
+## How to use an Deserializer ?
 
 First, create A FileDeserializerBuilder object and invoke "get" method to return the FileSerializer:
 <br> Example: <br>
@@ -33,14 +33,28 @@ JsonFileDeserializer deserializer = (JsonFileDeserializer) new FileDeserializerB
 int resultInt = deserializer.readInt("int");
 String resultString = deserializer.readUTF("string");
 float resultFloat = deserializer.readFloat("float");
-// Don't forget to close the deserializer ! You can use a "try-catch-with-ressources".
+// Don't forget to close the deserializer !
 serializer.close();
 ```
 <br>
 
-<strong>TODO</strong>
-<ul>
-<li>Create MavenCentral Repo<li>
-</ul>
+**Tip**: You can use a "try-catch-with-ressources" instead calling close method.
+
+## Installation
+
+Lastest Version:
+[ ![version][] ][download]
+
+Maven Integration
+
+Be sure to replace the **VERSION** key below with the latest version shown above!
+
+```xml
+<dependency>
+    <groupId>com.github.sofianelecubeur</groupId>
+    <artifactId>DataSerializer</artifactId>
+    <version>VERSION</version>
+</dependency>
+```
 
 </p>
