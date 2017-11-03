@@ -1,3 +1,5 @@
+[download]: https://github.com/SofianeLeCubeur/DataSerializer/releases/latest
+
 <h1> DataSerializer </h1>
 
 <p>
