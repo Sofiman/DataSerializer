@@ -1,4 +1,6 @@
 [download]: https://github.com/SofianeLeCubeur/DataSerializer/releases/latest
+[version]: 0.0.3
+[ ![version][] ][download]
 
 <h1> DataSerializer </h1>
 
