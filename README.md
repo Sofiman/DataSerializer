@@ -1,6 +1,6 @@
 [download]: https://github.com/SofianeLeCubeur/DataSerializer/releases/latest
+[javadoc]: https://sofianelecubeur.github.io/DataSerializer/doc/
 [version]: 0.0.3
-[ ![version][] ][download]
 
 <h1> DataSerializer </h1>
 
@@ -60,5 +60,9 @@ Be sure to replace the **VERSION** key below with the latest version shown above
     <version>VERSION</version>
 </dependency>
 ```
+
+## Documentation
+
+Find the JavaDoc here: [javadoc]
 
 </p>
