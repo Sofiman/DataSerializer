@@ -1,3 +1,7 @@
+[download]: https://github.com/SofianeLeCubeur/DataSerializer/releases/latest
+[version]: 0.0.3
+[ ![version][] ][download]
+
 <h1> DataSerializer </h1>
 
 <p>
@@ -38,7 +42,7 @@ serializer.close();
 ```
 <br>
 
-**Tip**: You can use a "try-catch-with-ressources" instead calling close method.
+> **Tip**: You can use a "try-catch-with-ressources" instead calling close method.
 
 ## Installation
 
