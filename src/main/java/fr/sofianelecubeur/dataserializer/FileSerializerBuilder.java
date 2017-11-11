@@ -18,25 +18,44 @@ public class FileSerializerBuilder {
 		this.length = 1024;
 		this.identifier = UUID.randomUUID();
 	}
-	
+
+    /**
+     * Set the serializer type
+     * @param type the serialier type
+     * @return this
+     */
 	public FileSerializerBuilder type(CompilationType type){
 		this.type = type;
 		
 		return this;
 	}
-	
+
+	/**
+	 * Use a custom buffer length
+	 * @param length the buffer length
+	 * @return this
+	 */
 	public FileSerializerBuilder length(int length){
 		this.length = length;
 		
 		return this;
 	}
-	
+
+	/**
+	 * Set a custom identifier
+	 * @param identifier the custom identifier
+	 * @return this
+	 */
 	public FileSerializerBuilder identifier(UUID identifier){
 		this.identifier = identifier;
 		
 		return this;
 	}
-	
+
+    /**
+     * Build the Deserializer
+     * @return FileSerializer
+     */
 	public FileSerializer get(){
 		try {
 			switch (this.type) {

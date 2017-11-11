@@ -14,6 +14,7 @@ public class CSVFileDeserializer extends Deserializer {
 
     private File file;
     private String delemiter = ",";
+    private CSVFileSerializer.ColumnType columnType;
     private Set<String> columns;
     private int rows;
     private Map<Integer, Map<String, String>> values;
@@ -21,12 +22,18 @@ public class CSVFileDeserializer extends Deserializer {
     public CSVFileDeserializer(File file, UUID identifier) throws IOException {
         this(new FileInputStream(file), identifier);
         this.file = file;
+        this.columnType = CSVFileSerializer.ColumnType.VERTICAL;
         this.loadValues(file);
     }
 
     public CSVFileDeserializer(File file, String delimiter, UUID identifier) throws IOException {
+        this(file, CSVFileSerializer.ColumnType.VERTICAL, delimiter, identifier);
+    }
+
+    public CSVFileDeserializer(File file, CSVFileSerializer.ColumnType columnType, String delimiter, UUID identifier) throws IOException {
         this(new FileInputStream(file), identifier);
         this.file = file;
+        this.columnType = columnType;
         this.delemiter = delimiter;
         this.loadValues(file);
     }
@@ -40,26 +47,39 @@ public class CSVFileDeserializer extends Deserializer {
         this.values = new HashMap<>();
         List<String> lines = Files.readAllLines(Paths.get(file.toURI()));
         if(lines.isEmpty()) throw new IllegalStateException("Invalid CSV file.");
-        String line = lines.stream().findFirst().orElse(null);
-        for (String col : line.split(delemiter))
-            columns.add(col);
+        if(columnType == CSVFileSerializer.ColumnType.VERTICAL) {
+            String line = lines.stream().findFirst().get();
+            for (String col : line.split(delemiter))
+                columns.add(col);
 
-        Map<Integer, String> indexMap = new HashMap<>();
-        int index = 0;
-        for (String column : columns)
-            indexMap.put(index++, column);
-        rows = (lines.size() - 1);
+            Map<Integer, String> indexMap = new HashMap<>();
+            int index = 0;
+            for (String column : columns)
+                indexMap.put(index++, column);
+            rows = (lines.size() - 1);
 
-        Map<String, String> values;
-        int cur;
-        for (int i = 1; i < (rows + 1); i++) {
-            line = lines.get(i);
-            values = new HashMap<>();
-            cur = 0;
-            for (String val : line.split(delemiter)) {
-                values.put(indexMap.get(cur++), val);
+            Map<String, String> values;
+            int cur;
+            for (int i = 1; i < (rows + 1); i++) {
+                line = lines.get(i);
+                values = new HashMap<>();
+                cur = 0;
+                for (String val : line.split(delemiter)) {
+                    values.put(indexMap.get(cur++), val);
+                }
+                this.values.put((i - 1), values);
             }
-            this.values.put((i - 1), values);
+        }else {
+            int cur = 0;
+            for (String line : lines){
+                String[] content = line.split(delemiter);
+                String column = content[0];
+                columns.add(column);
+                for (int i = 1; i < content.length; i++) {
+                    values.put(cur++, Collections.singletonMap(column, content[i]));
+                }
+            }
+            rows = cur;
         }
     }
 
@@ -73,10 +93,18 @@ public class CSVFileDeserializer extends Deserializer {
         return joiner.toString();
     }
 
+    /**
+     * Get the delimiter
+     * @return the delimiter
+     */
     public String getDelemiter() {
         return delemiter;
     }
 
+    /**
+     * Get total rows
+     * @return total rows
+     */
     public int getRows() {
         return rows;
     }
@@ -98,10 +126,19 @@ public class CSVFileDeserializer extends Deserializer {
         return list;
     }
 
+    /**
+     * Get all values for a line
+     * @param line the target line
+     * @return alls values for the line
+     */
     public Collection<String> getValues(int line) {
         return values.get(line).values();
     }
 
+    /**
+     * Get all values in a string
+     * @return All values formated
+     */
     public String getValuesString(){
         StringJoiner joiner = new StringJoiner(", ");
         for (int i = 0; i < rows; i++)

@@ -1,6 +1,7 @@
 package fr.sofianelecubeur.dataserializer;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.Properties;
 
 /**
@@ -31,6 +32,14 @@ public class FileInfo {
         return this.properties;
     }
 
+    public void create() throws IOException {
+        this.file.createNewFile();
+    }
+
+    public byte[] readAllBytes() throws IOException {
+        return Files.readAllBytes(file.toPath());
+    }
+
     public void save(String comments) {
         try {
             FileOutputStream out = new FileOutputStream(file);
@@ -54,4 +63,14 @@ public class FileInfo {
         this.file.delete();
     }
 
+    public File getFile() {
+        return file;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = file != null ? file.hashCode() : 0;
+        result = 31 * result + (properties != null ? properties.hashCode() : 0);
+        return result;
+    }
 }

@@ -1,4 +1,6 @@
-package fr.sofianelecubeur.dataserializer;
+package fr.sofianelecubeur.dataserializer.util;
+
+import fr.sofianelecubeur.dataserializer.HashTextSerializer;
 
 import java.util.UUID;
 

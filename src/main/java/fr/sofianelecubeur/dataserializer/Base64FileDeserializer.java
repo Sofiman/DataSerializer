@@ -31,7 +31,15 @@ public class Base64FileDeserializer extends Deserializer {
 	public Base64FileDeserializer(FileInputStream in, boolean compression, UUID identifier) throws IOException {
 		super(CompilationType.BINARY, (compression ? createBase64StreamWithCompression(in) : createBase64Stream(in)), identifier);
 	}
-	
+
+    /**
+     * Read a specified Object
+     * @param clazz the return object type
+     * @param <T> the object (null if not the same type)
+     * @return The Object
+     * @throws IOException exceptions from {@link ObjectInputStream}
+     * @throws ClassNotFoundException if the class is not found
+     */
 	@SuppressWarnings("unchecked")
 	public <T> T readObject(Class<T> clazz) throws IOException, ClassNotFoundException {
 		ObjectInputStream in = new ObjectInputStream(this.in);
@@ -46,6 +54,10 @@ public class Base64FileDeserializer extends Deserializer {
 		return in.readObject();
 	}
 
+	/**
+	 * Get File informations
+	 * @return the {@link FileInfo} object
+	 */
 	public FileInfo info(){
 		if(this.file == null) throw new NullPointerException();
 		return new FileInfo(this.file);

@@ -1,8 +1,11 @@
 package fr.sofianelecubeur.dataserializer;
 
+import fr.sofianelecubeur.dataserializer.util.HashUtils;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
+import java.security.MessageDigest;
 import java.util.UUID;
 
 public class TestSerializer {
@@ -17,7 +20,6 @@ public class TestSerializer {
 		long time = serializer.compile(new File("data"));
 		serializer.close();
 		System.out.println("Finished in "+(time / 1000)+"s");
-		System.out.println(serializer);
 
 		System.out.println("-----------------------");
 		System.out.println("Starting writing data...");
@@ -32,7 +34,8 @@ public class TestSerializer {
 
 		System.out.println(HashUtils.sha1("Test"));
 
-		CSVFileSerializer serializer2 = new CSVFileSerializer(UUID.randomUUID());
+		CSVFileSerializer serializer2 = (CSVFileSerializer) new FileSerializerBuilder().type(CompilationType.CVS).get();
+		serializer2.setType(CSVFileSerializer.ColumnType.HORIZONTAL);
 		serializer2.setDelemiter(";");
 		serializer2.addColumns("id", "value");
 		serializer2.setValue("id", "1");

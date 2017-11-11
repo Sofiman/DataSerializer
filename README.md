@@ -46,14 +46,22 @@ serializer.close();
 
 ## Installation
 
-Lastest Version:
-[ ![version][] ][download]
+Lastest Version: [download]
 
 Maven Integration
 
-Be sure to replace the **VERSION** key below with the latest version shown above!
+Be sure to replace the **VERSION** key below with the latest version !
 
 ```xml
+<repository>
+    <id>oss-sonatype</id>
+    <name>oss-sonatype</name>
+    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    <snapshots>
+        <enabled>true</enabled>
+    </snapshots>
+</repository>
+
 <dependency>
     <groupId>com.github.sofianelecubeur</groupId>
     <artifactId>DataSerializer</artifactId>

@@ -27,10 +27,11 @@ public class TestDeserializer {
 
 		System.out.println("------------------------");
 		CSVFileDeserializer deserializer2 = (CSVFileDeserializer) new FileDeserializerBuilder().type(CompilationType.CVS)
-                .file(new File("file.csv")).delemiter(";").get();
+                .file(new File("file.csv")).delemiter(";").type2(CSVFileSerializer.ColumnType.HORIZONTAL).get();
         System.out.println("Columns: "+deserializer2.getColumnsString());
         System.out.println("Rows: "+deserializer2.getRows());
         System.out.println("Values: "+deserializer2.getValuesString());
+
 
 	}
 	
